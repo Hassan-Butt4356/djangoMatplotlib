@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block title%}Humidity{%endblock title%}
+
+{%block content%}
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Created_at</th>
+                <th scope="col">Entry_id</th>
+                <th scope="col">Field</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for data in new_data%}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{data.created_at}} </td>
+                <td>{{data.entry_id}}</td>
+                <td>{{data.field2}}</td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-4">
+        {%if graph%}
+            <img src="data:image/png;base64,{{ graph }}" alt="Line Graph">
+        {%endif%}
+    </div>
+</div>
+
+{%endblock content%}
